@@ -1,0 +1,22 @@
+/* Styles for header and footer */
+header {
+    margin-bottom: 20px;
+  }
+  
+  footer.footer {
+    padding: 20px 0;
+  }
+  
+  .footer-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  
+  .footer-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  footer .text-center {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
