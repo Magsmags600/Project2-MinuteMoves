@@ -16,7 +16,7 @@ interface BodyInfoAttributes {
   extends Model<BodyInfoAttributes, BodyInfoCreationAttributes>
   implements BodyInfoAttributes
   {
-    public id!: number; // primary hey
+    public id!: number; // primary key
     public calories!: number;
     public protein!: number;
     public carbs!: number;
