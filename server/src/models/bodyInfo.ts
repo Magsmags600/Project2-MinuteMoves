@@ -37,27 +37,27 @@ interface BodyInfoAttributes {
           primaryKey: true,
         },
         calories: {
-          type: DataTypes.INTERGER,
+          type: DataTypes.INTEGER,
           allowNull: false,
         },
         protein: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         carbs: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         fat: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         percentage: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         userId: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'users',
