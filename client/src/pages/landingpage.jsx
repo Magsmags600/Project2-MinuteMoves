@@ -16,6 +16,7 @@ export default function About() {
       <a target="_blank">
           <img src="/OpenAI-Logo.png" className="chatgptImage" alt="chatgptlogo" />
         </a>
+        
         <button>Login </button>
         <button> Create Login </button>
       </div>

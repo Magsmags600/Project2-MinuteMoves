@@ -34,7 +34,7 @@ const Login = () => {
     <>
     <div className='form-container'>
       <form className='form login-form' onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1>Create Account Form</h1>
         <div className='form-group'>
           <label>Username</label>
           <input
@@ -45,6 +45,42 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
+
+
+        <div className='form-group'>
+          <label>First Name</label>
+          <input
+            className='form-input'
+            type='text'
+            name='username'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+
+        <div className='form-group'>
+          <label>Last Name</label>
+          <input
+            className='form-input'
+            type='text'
+            name='lastname'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className='form-group'>
+          <label>Email</label>
+          <input
+            className='form-input'
+            type='text'
+            name='email'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
         <div className='form-group'>
           <label>Password</label>
           <input
@@ -55,9 +91,12 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
+
+
+
         <div className='form-group'>
           <button className='btn btn-primary' type='submit'>
-            Login
+            Create Account
           </button>
         </div>
       </form>
