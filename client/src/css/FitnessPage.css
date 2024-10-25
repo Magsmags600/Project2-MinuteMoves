@@ -1,0 +1,36 @@
+/* Styles for FitnessPage */
+.fitness-page {
+    margin-top: 20px;
+  }
+  
+  .profile-card, .chart-card, .meal-card, .placeholder-card {
+    margin-bottom: 20px;
+  }
+  
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .profile-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .chart-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .meal-card .btn {
+    margin-top: 10px;
+  }
+  
+  .placeholder-card {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    text-align: center;
+  }
+  
