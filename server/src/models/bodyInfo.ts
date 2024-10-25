@@ -28,7 +28,7 @@ interface BodyInfoAttributes {
     public readonly updatedAt!: Date;
   }
 
-  export function bodyInfoFactory(sequelize: Sequelize): typeof BodyInfo {
+  export function BodyInfoFactory(sequelize: Sequelize): typeof BodyInfo {
     BodyInfo.init(
       {
         id: {
