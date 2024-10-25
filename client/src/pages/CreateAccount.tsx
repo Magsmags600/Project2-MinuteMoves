@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import React from 'react';
 import Auth from '../utils/auth';
+import React from 'react';
 import { login } from '../api/authAPI';
 import type { UserLogin } from '../interfaces/UserLogin';
 
@@ -34,7 +34,8 @@ const Login = () => {
     <>
     <div className='form-container'>
       <form className='form login-form' onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1>Create Account Form</h1>
+
         
         <div className='form-group'>
           <label>Username</label>
@@ -42,6 +43,41 @@ const Login = () => {
             className='form-input'
             type='text'
             name='username'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+
+        <div className='form-group'>
+          <label>First Name</label>
+          <input
+            className='form-input'
+            type='text'
+            name='username'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+
+        <div className='form-group'>
+          <label>Last Name</label>
+          <input
+            className='form-input'
+            type='text'
+            name='lastname'
+            value={loginData.username || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className='form-group'>
+          <label>Email</label>
+          <input
+            className='form-input'
+            type='text'
+            name='email'
             value={loginData.username || ''}
             onChange={handleChange}
           />
@@ -58,9 +94,11 @@ const Login = () => {
           />
         </div>
 
+
+
         <div className='form-group'>
           <button className='btn btn-primary' type='submit'>
-            Login
+            Create Account
           </button>
         </div>
       </form>
