@@ -1,5 +1,4 @@
-import "../css/About.css";
-import React from "react";
+import "../css/initialpage.css";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
@@ -18,7 +17,7 @@ export default function LandingPage() {
       <div className="loginbtn">
    
       <a target="_blank">
-          <img src="/OpenAI-Logo.png" className="chatgptImage" alt="chatgptlogo" />
+          <img src="../assets/OpenAI-logo.png" className="chatgptImage" alt="chatgptlogo" />
           
         </a>
         <Link to="/Login">
@@ -31,3 +30,5 @@ export default function LandingPage() {
     </>
   );
 }
+
+
