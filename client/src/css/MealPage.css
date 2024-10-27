@@ -19,3 +19,12 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin-top: 2rem;
   }
+
+.recipe-card {
+    background-color: #0a1f44; /* Navy blue card background */
+    color: #f8f9fa; /* Cream text color */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+  }
