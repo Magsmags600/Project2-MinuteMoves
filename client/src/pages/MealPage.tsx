@@ -27,4 +27,32 @@ const MealPage = () => {
   useEffect(() => {
     fetchRecommendedRecipes();
   }, [nutrientGoals]);
-}
+
+  return (
+    <div className="meal-page">
+      <h2>Your Recommended Meals</h2>
+      <p>Based on your intake survey, here are some meal suggestions!</p>
+
+      <div className="meal-list">
+        {recipes.length > 0 ? (
+          recipes.map((recipe) => (
+            <div key={recipe.id} className="recipe-card">
+              <h3>{recipe.name}</h3>
+              <p>Calories: {recipe.calories}</p>
+              <p>Protein: {recipe.protein}g</p>
+              <p>Carbs: {recipe.carbs}g</p>
+              <p>Fat: {recipe.fat}g</p>
+              <Link to={`/recipe/${recipe.id}`}>
+                <button>View Recipe</button>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>No recipes match your targets yet. Try adjusting your survey answers.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default MealPage;
