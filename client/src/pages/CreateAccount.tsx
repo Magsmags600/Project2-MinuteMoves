@@ -2,6 +2,8 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { login } from "../api/authAPI";
 import type { CreateAccount } from "../interfaces/CreateAccount";
+// import "../css/createaccount.css";
+
 
 const Login = () => {
   const [CreateAccountData, setCreateAccountData] = useState<CreateAccount>({
@@ -11,6 +13,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -22,13 +26,37 @@ const Login = () => {
     });
   };
 
+  const validateEmail = (email: string) => {
+    return email.includes("@");
+  };
+
+  const validatePassword = (password: string) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    if (!validateEmail(CreateAccountData.email)) {
+      setErrorMessage("Email must contain an '@' symbol.");
+      return;
+    }
+
+    if (!validatePassword(CreateAccountData.password)) {
+      setErrorMessage(
+        "Password must be at least 8 characters long, contain at least one uppercase letter, and one number."
+      );
+      return;
+    }
+
     try {
       const data = await login(CreateAccountData);
       Auth.login(data.token);
     } catch (err) {
       console.error("Error: Existing User", err);
+      setErrorMessage("Failed to create account. Please try again.");
     }
   };
 
@@ -37,6 +65,8 @@ const Login = () => {
       <div className="form-container">
         <form className="form login-form" onSubmit={handleSubmit}>
           <h1>Create Account Form</h1>
+
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <div className="form-group">
             <label>Username</label>

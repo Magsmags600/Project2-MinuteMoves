@@ -8,18 +8,28 @@ export default function LandingPage() {
 
       <p className="content">
         This is an application where you can get assistance on creating a meal
-        plan, workout routine, and also to track your progress to help you toward your fitness goals. We hope you enjoy!
+        plan, workout routine, and also to track your progress to help you
+        toward your fitness goals. We hope you enjoy!
       </p>
-      
-      <a target="_blank"  className="logo">
-          <img src="/pixel-speech-bubble.gif" className="speechbubble" alt="chatgptlogo" />
-        </a>
+
+      <a target="_blank" className="logo">
+        <img
+          src="../public/pixel-speech-bubble.gif"
+          className="speechbubble"
+          alt="speechbubble"
+        />
+      </a>
       <div className="loginbtn">
-   
-      <a target="_blank">
-          <img src="../assets/OpenAI-logo.png" className="chatgptImage" alt="chatgptlogo" />
-          
+        <h1>Powered By</h1>
+
+        <a target="_blank">
+          <img
+            src="../public/OpenAI-logo.png"
+            className="chatgptImage"
+            alt="chatgptlogo"
+          />
         </a>
+
         <Link to="/Login">
           <button>Login</button>
         </Link>
@@ -30,5 +40,3 @@ export default function LandingPage() {
     </>
   );
 }
-
-
