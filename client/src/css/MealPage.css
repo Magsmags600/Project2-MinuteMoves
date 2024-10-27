@@ -32,3 +32,12 @@ h2 {
 .recipe-card:hover {
     transform: scale(1.05); /* Slightly enlarge on hover */
   }
+
+.recipe-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+.recipe-card p {
+    margin: 0.25rem 0;
+  }
