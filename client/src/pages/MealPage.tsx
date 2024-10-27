@@ -12,4 +12,14 @@ const MealPage = () => {
       fat: 0,
       calories: 0,
     });
+    
+      // Fetch recipes based on nutrient goals
+    const fetchRecommendedRecipes = async () => {
+        try {
+          const data = await fetchRecipes(nutrientGoals);
+          setRecipes(data);
+        } catch (err) {
+          console.error('Failed to retrieve recipes:', err);
+        }
+      };
 }
