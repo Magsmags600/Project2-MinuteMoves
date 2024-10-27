@@ -3,3 +3,8 @@ body {
     background-color: #f8f9fa; /* Light cream background for the whole page */
     color: #333; /* Darker text for readability */
   }
+
+.meal-page {
+    padding: 2rem;
+    text-align: center;
+  }
