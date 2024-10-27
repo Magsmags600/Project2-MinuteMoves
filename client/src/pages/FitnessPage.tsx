@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
-import './FitnessPage.css';
+import '../css/FitnessPage.css';
 
 const FitnessPage: React.FC = () => {
   // Sample data for the pie chart
