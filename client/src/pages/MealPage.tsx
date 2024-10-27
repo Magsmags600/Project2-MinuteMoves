@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RecipeData } from "../interfaces/RecipeData"; // Define this to structure your recipe info
 // import { fetchRecipes } from '../api/recipeAPI'; // Define this to structure your recipe API call
-import './css/MealPage.css';
+import '../css/MealPage.css';
 
 const MealPage = () => {
     // State for recommended recipes and nutrient goals
