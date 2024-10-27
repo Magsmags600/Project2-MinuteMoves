@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom';
-// import Navbar from './components/Navbar';
-// import HeaderFooter from './pages/HeaderFooter';  
-// import LandingPage from './pages/landingpage';
+import Navbar from './components/Navbar';
+import HeaderFooter from './pages/HeaderFooter';
+import LandingPage from './pages/landingpage';
 
 function App() {
   return (
     <div>
-      {/* <HeaderFooter />
-      <LandingPage/>
-      {/* <Navbar /> */}
+      <HeaderFooter /> {/* Header and Footer will display on every page */}
+      <Navbar /> {/* Navbar for site-wide navigation */}
+      <LandingPage /> {/* Landing page, can be conditionally rendered if needed */}
+      
       <main className='container pt-5'>
-        <Outlet />
-      </main> 
+        <Outlet /> {/* This renders the current route component */}
+      </main>
     </div>
   );
 }
