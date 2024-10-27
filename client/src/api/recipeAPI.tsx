@@ -1,8 +1,6 @@
-import type { UserLogin } from '../interfaces/UserLogin';
-
-const retrieveRecipe = async () => {
+const fetchRecipes = async () => {
   try {
-    const response = await fetch('/api/recipe', {
+    const response = await fetch('/api/recipes', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -20,4 +18,4 @@ const retrieveRecipe = async () => {
   }
 };
 
-export { retrieveRecipe };
+export { fetchRecipes };
