@@ -8,3 +8,7 @@ body {
     padding: 2rem;
     text-align: center;
   }
+
+h2 {
+    color: #0a1f44; /* Navy blue heading */
+  }
