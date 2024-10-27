@@ -41,3 +41,16 @@ h2 {
 .recipe-card p {
     margin: 0.25rem 0;
   }
+
+.recipe-card button {
+    background-color: #f8f9fa; /* Cream button background */
+    color: #0a1f44; /* Navy text */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+.recipe-card button:hover {
+    background-color: #e6e6e6; /* Slightly darker cream on hover */
+  }
