@@ -12,7 +12,7 @@ const MealPage = () => {
       fat: 0,
       calories: 0,
     });
-    
+
       // Fetch recipes based on nutrient goals
     const fetchRecommendedRecipes = async () => {
         try {
@@ -22,4 +22,9 @@ const MealPage = () => {
           console.error('Failed to retrieve recipes:', err);
         }
       };
+
+        // Use effect to load recipes based on goals (set from intake survey)
+  useEffect(() => {
+    fetchRecommendedRecipes();
+  }, [nutrientGoals]);
 }
