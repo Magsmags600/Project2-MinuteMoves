@@ -7,6 +7,8 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import Login from './pages/Login.tsx';
 import LandingPage from './pages/landingpage.tsx';
 import CreateAccount from './pages/CreateAccount.tsx';
+import FitnessPage from './pages/FitnessPage.tsx';
+import MealPage from './pages/MealPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: '/createaccount',
         element: <CreateAccount />,
+      },
+      {
+        path: '/fitnesspage',
+        element: <FitnessPage />,
+      },
+      {
+        path: '/mealpage',
+        element: <MealPage />,
       },
     ],
   },
