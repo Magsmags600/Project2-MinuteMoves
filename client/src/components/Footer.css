@@ -1,0 +1,24 @@
+/* Footer.css */
+.footer {
+  background-color: #0a1f44; /* Navy blue background */
+  color: #f8f9fa; /* Cream text color */
+  padding: 1rem 0;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Shadow at the top for depth */
+}
+
+.footer-nav .nav-link {
+  color: #f8f9fa;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-nav .nav-link:hover {
+  color: #e6e6e6; /* Lighter color on hover */
+}
+
+.footer .text-center {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
