@@ -1,10 +1,11 @@
-import React from 'react';
+// import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import { Pie } from 'react-chartjs-2';
+// import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
+
 import '../css/FitnessPage.css';
 
-const FitnessPage: React.FC = () => {
+const FitnessPage = () => {
   // Sample data for the pie chart
   const pieData = {
     labels: ['Protein', 'Carbs', 'Fats'],
@@ -68,7 +69,7 @@ const FitnessPage: React.FC = () => {
           </Card>
         </Col>
 
-        {/* Pie Chart Card */}
+        {/* Pie Chart Card
         <Col md={6}>
           <Card className="chart-card">
             <Card.Body>
@@ -76,7 +77,7 @@ const FitnessPage: React.FC = () => {
               <Pie data={pieData} />
             </Card.Body>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row className="mb-4">
