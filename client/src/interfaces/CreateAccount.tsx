@@ -1,7 +1,7 @@
 export interface CreateAccount {
     username: string;
-    firstname:string;
-    lastname: string;
+    firstName:string;
+    lastName: string;
     email: string;
     password: string;
   }

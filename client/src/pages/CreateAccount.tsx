@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
-import { login } from "../api/authAPI";
+import { signUp } from "../api/authAPI";
 import type { CreateAccount } from "../interfaces/CreateAccount";
 // import "../css/createaccount.css";
 
@@ -8,8 +8,8 @@ import type { CreateAccount } from "../interfaces/CreateAccount";
 const Login = () => {
   const [CreateAccountData, setCreateAccountData] = useState<CreateAccount>({
     username: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -52,7 +52,8 @@ const Login = () => {
     }
 
     try {
-      const data = await login(CreateAccountData);
+      console.log(CreateAccountData);
+      const data = await signUp(CreateAccountData);
       Auth.login(data.token);
     } catch (err) {
       console.error("Error: Existing User", err);
@@ -84,8 +85,8 @@ const Login = () => {
             <input
               className="form-input"
               type="text"
-              name="firstname"
-              value={CreateAccountData.firstname}
+              name="firstName"
+              value={CreateAccountData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -95,8 +96,8 @@ const Login = () => {
             <input
               className="form-input"
               type="text"
-              name="lastname"
-              value={CreateAccountData.lastname}
+              name="lastName"
+              value={CreateAccountData.lastName}
               onChange={handleChange}
             />
           </div>

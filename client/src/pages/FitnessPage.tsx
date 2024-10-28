@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import 'chart.js/auto';
 import '../css/FitnessPage.css';
+import auth from '../utils/auth';
 
 const FitnessPage = () => {
   // State for modal
@@ -19,7 +20,7 @@ const FitnessPage = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    
+    console.log(auth.getProfile()?.id); // Get user's name from Auth0
     // Validate inputs before proceeding
     if (typeof weight === 'number' && typeof height === 'number' && typeof age === 'number' && gender && activityLevel) {
       // Use the inputs for your calculations or logic
