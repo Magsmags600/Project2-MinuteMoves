@@ -35,6 +35,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 // POST api/users - Create a new user
 router.post('/', async (req: Request, res: Response) => {
+  console.log(req.body);
   const { firstName, lastName, username, email, password } = req.body;
   try {
     const newUser = await User.create({ firstName, lastName, username, email, password });
