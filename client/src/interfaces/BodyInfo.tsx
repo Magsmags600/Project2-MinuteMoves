@@ -6,7 +6,5 @@ export interface BodyInfo {
     fat: number;
     percentage: number;
     userId: number;
-    createdAt: Date;
-    updatedAt: Date;
   }
   
