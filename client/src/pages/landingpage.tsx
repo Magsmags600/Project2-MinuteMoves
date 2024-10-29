@@ -3,6 +3,8 @@
 import React from "react";
 import "../css/LandingPage.css";
 import { Link } from "react-router-dom";
+import colorful from '../assets/MinuteMovesColorful.png';
+import minutemoves from '../assets/minutemoves.png';
 
 export default function LandingPage() {
   return (
@@ -38,10 +40,10 @@ export default function LandingPage() {
         {/* Right-hand Card with Image Cards */}
         <div className="right-card">
           <div className="image-card top-image-card">
-            <img src="../public/image1.jpg" alt="Image 1" className="card-image" />
+            <img src={colorful} alt="Image 1" className="card-image" />
           </div>
           <div className="image-card bottom-image-card">
-            <img src="../public/image2.jpg" alt="Image 2" className="card-image" />
+            <img src={minutemoves} alt="Image 2" className="card-image" />
           </div>
         </div>
       </div>
