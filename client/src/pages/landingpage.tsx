@@ -4,7 +4,7 @@ import React from "react";
 import "../css/LandingPage.css";
 import { Link } from "react-router-dom";
 import colorful from '../assets/MinuteMovesColorful.png';
-import minutemoves from '../assets/minutemoves.png';
+
 
 export default function LandingPage() {
   return (
@@ -42,10 +42,8 @@ export default function LandingPage() {
           <div className="image-card top-image-card">
             <img src={colorful} alt="Image 1" className="card-image" />
           </div>
-          <div className="image-card bottom-image-card">
-            <img src={minutemoves} alt="Image 2" className="card-image" />
-          </div>
-        </div>
+          
+         </div>
       </div>
     </div>
   );
