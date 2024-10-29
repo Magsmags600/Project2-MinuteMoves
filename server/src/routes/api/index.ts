@@ -5,6 +5,6 @@ import { bodyInfoRouter } from './bodyInfo-routes.js';
 const router = Router();
 
 router.use('/users', userRouter);
-router.get('/bodyInfo', bodyInfoRouter);
+router.use('/bodyInfo', bodyInfoRouter);
 
 export default router;
