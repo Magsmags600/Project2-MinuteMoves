@@ -34,3 +34,22 @@
     text-align: center;
   }
   
+
+  /* Style specifically for workout checklist items */
+.fitness-page .workout-list .workout-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px; /* Adjust spacing between items */
+}
+
+/* Style for the checkbox alignment */
+.fitness-page .workout-list .workout-item .form-check-input {
+  margin-right: 8px; /* Space between checkbox and label */
+}
+
+/* Style for the workout label to ensure alignment and spacing */
+.fitness-page .workout-list .workout-item .form-check-label {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2; /* Tighter line height for compact spacing */
+}
