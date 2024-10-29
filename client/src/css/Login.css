@@ -1,7 +1,7 @@
-/* CreateAccount.css */
+/* Login.css */
 
 .form-container {
-  background-color: #D3D0CBFF; /* Background color */
+  background-color: #D3D0CBFF; /* Background color for the form */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   padding: 2rem;
 }
 
-.create-account-form {
+.login-form {
   background-color: #2b74c2; /* Updated form background color */
   padding: 2rem;
   border-radius: 8px;
@@ -17,7 +17,6 @@
   max-width: 400px;
   width: 100%;
   text-align: center;
-  color: #FFFFFF;
 }
 
 .form-title {
@@ -41,14 +40,14 @@
 .form-input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #9FB1BCFF; /* Input border color */
+  border: 1px solid #9FB1BCFF; /* Border color for input */
   border-radius: 4px;
   background-color: #FFFFFF;
   color: #2E5266FF;
 }
 
-.create-account-btn {
-  background-color: #d46108; /* Updated button color */
+.login-btn {
+  background-color: #d46108; /* Updated button background color */
   color: #FFFFFF;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -57,8 +56,8 @@
   font-size: 1rem;
 }
 
-.create-account-btn:hover {
-  background-color: #9FB1BCFF; /* Updated hover color */
+.login-btn:hover {
+  background-color: #9FB1BCFF; /* Updated hover effect for button */
 }
 
 .error-message {

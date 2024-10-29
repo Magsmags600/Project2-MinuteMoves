@@ -1,24 +1,43 @@
 /* Footer.css */
+
 .footer {
-  background-color: #0a1f44; /* Navy blue background */
-  color: #f8f9fa; /* Cream text color */
-  padding: 1rem 0;
+  background-color: #2E5266FF; /* Consistent dark background with header */
+  color: #D3D0CBFF; /* Softer color for text */
+  padding: 0.5rem 0; /* Reduced padding to make the footer shorter */
   text-align: center;
-  margin-top: 2rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Shadow at the top for depth */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Consistent shadow styling */
 }
 
-.footer-nav .nav-link {
-  color: #f8f9fa;
-  margin: 0 1rem;
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.25rem; /* Reduced padding for a more compact layout */
+}
+
+.footer-nav .text-light {
+  color: #B8C0FF; /* Matching link color */
   font-size: 0.9rem;
 }
 
-.footer-nav .nav-link:hover {
-  color: #e6e6e6; /* Lighter color on hover */
+.footer-nav .text-light:hover {
+  color: #9FB1BCFF; /* Hover effect color */
 }
 
-.footer .text-center {
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+.small-text {
+  font-size: 0.75rem;
+  color: #D3D0CBFF; /* Muted color for smaller text */
+}
+
+img.d-inline-block.align-top {
+  width: 30px;
+  height: 30px;
+}
+
+/* Centered copyright text styling */
+.copyright {
+  font-size: 0.75rem; /* Reduced font size */
+  color: #D3D0CBFF;
+  margin-top: 0.25rem; /* Minimal spacing to reduce overall height */
 }
