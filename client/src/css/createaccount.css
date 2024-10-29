@@ -32,7 +32,7 @@
 }
 
 .form-label {
-  color: #6E8898FF; /* Label color */
+  color: rgb(12, 12, 12); /* Label color */
   font-size: 1rem;
   margin-bottom: 0.5rem;
   display: block;
