@@ -1,42 +1,64 @@
-import "../css/initialpage.css";
+// src/components/LandingPage.tsx
+
+import React from "react";
+import "../css/LandingPage.css";
 import { Link } from "react-router-dom";
+import colorful from '../assets/MinuteMovesColorful.png';
+import logo from '../assets/Logopic.png';
 
 export default function LandingPage() {
   return (
-    <>
-      <h1 className="loginpage">Welcome to your Personal Fitness Tracker</h1>
-
+    <div className="landing-page">
+      <h1 className="title">Welcome to MinuteMoves!</h1>
       <p className="content">
-        This is an application where you can get assistance on creating a meal
-        plan, workout routine, and also to track your progress to help you
-        toward your fitness goals. We hope you enjoy!
+        Personalized Fitness and Food for Every Goal: Make the most of your time with brief, targeted workouts and nutrition that support your individual goals.
       </p>
 
-      <a target="_blank" className="logo">
-        <img
-          src="../public/pixel-speech-bubble.gif"
-          className="speechbubble"
-          alt="speechbubble"
-        />
-      </a>
-      <div className="loginbtn">
-        <h1>Powered By</h1>
+      <div className="main-cards">
+        {/* Left-hand Card */}
+        <div className="left-card">
+          {/* Tagline Card */}
+          <div className="tagline-card">
+            <p className="tagline-text">Minutes That Matter! </p>
+          </div>
 
-        <a target="_blank">
-          <img
-            src="../public/OpenAI-logo.png"
-            className="chatgptImage"
-            alt="chatgptlogo"
-          />
-        </a>
+          {/* Three Cards */}
+          <div className="three-cards">
+            <div className="small-card top-card">
+              <p>Fuel Your Goals, Minute by Minute: Fitness and Food Tailored to Your Path.</p>
+            </div>
+            <div className="small-card middle-card">
+              <p>Achieve More in Minutes: Small Efforts, Big Results, Your Unique Way.</p>
+            </div>
+            <div className="small-card bottom-card">
+              <p>One Minute, One Step Closer: Fitness & Nutrition That Fits Your Goals.</p>
+            </div>
+          </div>
 
-        <Link to="/Login">
-          <button>Login</button>
-        </Link>
-        <Link to="/CreateAccount">
-          <button>Create Login</button>
-        </Link>
+          {/* Image Placeholder Below Three Cards */}
+          <div className="image-placeholder">
+            <img src={logo} alt="Placeholder Image" className="placeholder-image" />
+          </div>
+        </div>
+
+        {/* Right-hand Card with Image and Text Cards */}
+        <div className="right-card">
+          <div className="image-card top-image-card">
+            <img src={colorful} alt="Image 1" className="card-image" />
+          </div>
+
+          {/* First Text Card Below Image */}
+          <div className="text-card">
+            <p>Empower your fitness journey with tools that are easy to follow, tailored to your needs, and designed for real progress!</p>
+          </div>
+
+          {/* Second Text Card Below First Text Card */}
+          <div className="text-card">
+            <p>Track your daily progress and celebrate each milestone along the way with MinuteMoves!</p>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
+

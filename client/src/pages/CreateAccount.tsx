@@ -1,11 +1,12 @@
+// src/components/CreateAccount.tsx
+
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { signUp } from "../api/authAPI";
 import type { CreateAccount } from "../interfaces/CreateAccount";
-// import "../css/createaccount.css";
+import "../css/CreateAccount.css";
 
-
-const Login = () => {
+const CreateAccount = () => {
   const [CreateAccountData, setCreateAccountData] = useState<CreateAccount>({
     username: "",
     firstName: "",
@@ -52,7 +53,6 @@ const Login = () => {
     }
 
     try {
-      console.log(CreateAccountData);
       const data = await signUp(CreateAccountData);
       Auth.login(data.token);
     } catch (err) {
@@ -62,77 +62,75 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="form-container">
-        <form className="form login-form" onSubmit={handleSubmit}>
-          <h1>Create Account Form</h1>
+    <div className="form-container">
+      <form className="form create-account-form" onSubmit={handleSubmit}>
+        <h1 className="form-title">Create Account</h1>
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <div className="form-group">
-            <label>Username</label>
-            <input
-              className="form-input"
-              type="text"
-              name="username"
-              value={CreateAccountData.username}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label className="form-label">Username</label>
+          <input
+            className="form-input"
+            type="text"
+            name="username"
+            value={CreateAccountData.username}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>First Name</label>
-            <input
-              className="form-input"
-              type="text"
-              name="firstName"
-              value={CreateAccountData.firstName}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label className="form-label">First Name</label>
+          <input
+            className="form-input"
+            type="text"
+            name="firstName"
+            value={CreateAccountData.firstName}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>Last Name</label>
-            <input
-              className="form-input"
-              type="text"
-              name="lastName"
-              value={CreateAccountData.lastName}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label className="form-label">Last Name</label>
+          <input
+            className="form-input"
+            type="text"
+            name="lastName"
+            value={CreateAccountData.lastName}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              className="form-input"
-              type="text"
-              name="email"
-              value={CreateAccountData.email}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label className="form-label">Email</label>
+          <input
+            className="form-input"
+            type="text"
+            name="email"
+            value={CreateAccountData.email}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              className="form-input"
-              type="password"
-              name="password"
-              value={CreateAccountData.password}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label className="form-label">Password</label>
+          <input
+            className="form-input"
+            type="password"
+            name="password"
+            value={CreateAccountData.password}
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <button className="btn btn-primary" type="submit">
-              Create Account
-            </button>
-          </div>
-        </form>
-      </div>
-    </>
+        <div className="form-group">
+          <button className="btn create-account-btn" type="submit">
+            Create Account
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
-export default Login;
+export default CreateAccount;
