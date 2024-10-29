@@ -1,26 +1,54 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RecipeData } from "../interfaces/RecipeData"; // Define this to structure your recipe info
-// import { fetchRecipes } from '../api/recipeAPI'; // Define this to structure your recipe API call
+import { RecipeData } from "../interfaces/RecipeData"; 
+import { fetchRecipes,fetchUserGoals } from '../api/recipeAPI'; 
 import '../css/MealPage.css';
+import auth from '../utils/auth'; 
+
 
 const MealPage = () => {
     // State for recommended recipes and nutrient goals
-    const [recipes] = useState<RecipeData[]>([]);
+    const [recipes, setRecipes] = useState<RecipeData[]>([]);
+    const [userGoals, setUserGoals] = useState<{ calories: number; protein: number; carbs: number; fat: number } | null>(null);
 
-      // Fetch recipes based on nutrient goals
-    const fetchRecommendedRecipes = async () => {
+        
+    useEffect(() => {
+      const loadUserGoals = async () => {
         try {
-      
-        } catch (err) {
-          console.error('Failed to retrieve recipes:', err);
+          const id  = auth.getProfile()?.id
+          const goals = await fetchUserGoals(id as any);
+          console.log(goals);
+          const { calories, protein, carbs, fat } = goals;
+    
+
+          const filteredGoals = { calories, protein, carbs, fat };
+    
+          setUserGoals(filteredGoals); // Store only the filtered goals in state
+        } catch (error) {
+          console.error("Failed to fetch user goals:", error);
         }
       };
+      
+      loadUserGoals();
+    }, []);
 
-        // Use effect to load recipes based on goals (set from intake survey)
-  useEffect(() => {
-    fetchRecommendedRecipes();
-  });
+    useEffect(() => {
+      const loadRecipes = async () => {
+        if (userGoals) {
+          try {
+            console.log(userGoals); 
+            const fetchedRecipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
+            console.log(fetchRecipes);
+            setRecipes(fetchedRecipes);
+          } catch (error) {
+            console.error("Failed to fetch recipes:", error);
+          }
+        }
+      };
+      
+          loadRecipes();  // Run the load function when MealPage mounts
+        }, [userGoals]);
+      
 
   return (
     <div className="meal-page">
@@ -28,22 +56,10 @@ const MealPage = () => {
       <p>Based on your intake survey, here are some meal suggestions!</p>
 
       <div className="meal-list">
-        {recipes.length > 0 ? (
-          recipes.map((recipe) => (
-            <div key={recipe.id} className="recipe-card">
-              <h3>{recipe.name}</h3>
-              <p>Calories: {recipe.calories}</p>
-              <p>Protein: {recipe.protein}g</p>
-              <p>Carbs: {recipe.carbs}g</p>
-              <p>Fat: {recipe.fat}g</p>
-              <Link to={`/recipe/${recipe.id}`}>
-                <button>View Recipe</button>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p>No recipes match your targets yet. Try adjusting your survey answers.</p>
-        )}
+        {recipes ? (
+          <div> {recipes}</div>
+        ) : (<div></div>)}
+
       </div>
     </div>
   );
