@@ -1,63 +1,39 @@
-// // src/components/Footer.tsx
-// import React from 'react';
-// import { Navbar, Nav, Container } from 'react-bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './Footer.css';
-
-// const Footer: React.FC = () => {
-//   return (
-//     <footer className="footer bg-dark">
-//       <Container>
-//         <Navbar variant="dark">
-//           <Nav className="me-auto footer-nav">
-//             <Nav.Link href="/about">About</Nav.Link>
-//             <Nav.Link href="/contact">Contact</Nav.Link>
-//             <Nav.Link href="/privacy">Privacy Policy</Nav.Link>
-//           </Nav>
-//         </Navbar>
-//         <div className="text-center text-white">
-//           &copy; {new Date().getFullYear()} Fitness Tracker. All rights reserved.
-//         </div>
-//       </Container>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
 // src/components/Footer.tsx
 
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css';
+import { Link } from 'react-router-dom';
+import logo from '../assets/OpenAI-logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer bg-dark">
+    <footer className="footer">
       <Container>
-        <Navbar variant="dark">
+        <div className="footer-content d-flex justify-content-between align-items-center">
           {/* Left side content */}
-          <div className="footer-left">
+          <div className="footer-left d-flex align-items-center">
             <img
-              src="../assets/OpenAI-logo.png"
+              src={logo}
               alt="Logo"
               width="30"
               height="30"
               className="d-inline-block align-top"
             />
-            <span className="ms-2 text-white">Powered by ChatGPT</span>
+            <span className="ms-2 text-light">Powered by ChatGPT</span>
           </div>
 
-          {/* Right side content */}
-          <Nav className="ms-auto footer-nav">
-            <Nav.Link href="/about" className="text-white">About</Nav.Link>
-            <Nav.Link href="/contact" className="text-white">Contact</Nav.Link>
-            <Nav.Link href="/privacy" className="text-white">Privacy Policy</Nav.Link>
-            <Nav.Link href="/terms" className="text-white">Terms and Conditions</Nav.Link>
+          {/* Right side content with link styling to match header */}
+          <Nav className="footer-nav d-flex">
+            <Link to="/about" className="text-light me-3 small-text">About</Link>
+            <Link to="/contact" className="text-light me-3 small-text">Contact</Link>
+            <Link to="/privacy" className="text-light me-3 small-text">Privacy Policy</Link>
+            <Link to="/terms" className="text-light small-text">Terms and Conditions</Link>
           </Nav>
-        </Navbar>
+        </div>
 
-        <div className="text-center text-white mt-3">
+        <div className="text-center text-light mt-3 copyright">
           &copy; 2024 MinuteMoves. All rights reserved.
         </div>
       </Container>

@@ -1,0 +1,92 @@
+/* LandingPage.css */
+
+.landing-page {
+  background-color: #D3D0CBFF; /* Main background color */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: #2E5266FF;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content {
+  color: #6E8898FF;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 60%;
+}
+
+/* Main Cards Container */
+.main-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Left Card */
+.left-card,
+.right-card {
+  flex: 1;
+  padding: 1rem;
+  background-color: #B8C0FF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Tagline Card */
+.tagline-card {
+  background-color: #BBD0FF;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.tagline-text {
+  color: #2E5266FF;
+  font-weight: bold;
+}
+
+/* Three Stacked Cards in Left Card */
+.three-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.small-card {
+  background-color: #9FB1BCFF;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.top-card,
+.middle-card,
+.bottom-card {
+  font-size: 1rem;
+  color: #2E5266FF;
+}
+
+/* Right Card with Images */
+.image-card {
+  background-color: #6E8898FF;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}

@@ -9,7 +9,7 @@ import logo from '../assets/minutemoves.png';
 
 const Header: React.FC = () => {
   return (
-    <header>
+    <header className="custom-header">
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           {/* Logo and Brand Name */}
@@ -17,11 +17,11 @@ const Header: React.FC = () => {
             <img
               src={logo}
               alt="Logo"
-              width="50"  // Increased width
-              height="50" // Increased height
+              width="50"  // Adjusted width
+              height="50" // Adjusted height
               className="d-inline-block align-top"
             />
-            <span className="ms-2 brand-name">MinuteMoves</span>
+            <span className="ms-2 large-brand-name">MinuteMoves</span>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbar" />

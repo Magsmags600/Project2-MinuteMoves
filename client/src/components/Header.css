@@ -1,34 +1,59 @@
 /* Header.css */
-.header {
-    background-color: #0a1f44; /* Navy blue background */
-    color: #f8f9fa; /* Cream text color */
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
 
-.header .navbar-brand {
-    font-size: 1.5rem;
-    color: #f8f9fa;
+/* Remove default margin and padding from the html and body to eliminate gaps */
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Remove any margin or padding from the header */
+  header {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ensure Navbar is flush to the top of the page */
+  .custom-header,
+  .navbar {
+    margin: 0;
+    padding: 0;
+    background-color: #2E5266FF; /* Dark background for the header */
+  }
+  
+  /* Large brand name styling */
+  .large-brand-name {
+    font-size: 2.5rem; /* Emphasized size for brand text */
     font-weight: bold;
-}
-
-.header .navbar-brand:hover {
-    color: #e6e6e6; /* Slightly lighter color on hover */
-}
-
-.header .nav-link {
-    color: #f8f9fa;
-    margin-right: 1rem;
-}
-
-.header .nav-link:hover {
-    color: #e6e6e6; /* Lighter color on hover */
-}
-
-.header .navbar-toggler {
-    border: none;
-}
-
-.header .navbar-collapse {
-    justify-content: flex-end;
-}
+    color: #B8C0FF; /* Light contrasting color for brand text */
+  }
+  
+  /* Small text styling for right-aligned links */
+  .small-text {
+    font-size: 0.75rem;
+    color: #D3D0CBFF; /* Muted color for less emphasized links */
+  }
+  
+  /* Logo image styling */
+  img.d-inline-block.align-top {
+    width: 100px !important; /* Adjusted size for balanced look */
+    height: 100px !important;
+  }
+  
+  /* Right-aligned link styling */
+  .right-links .text-light {
+    color: #6E8898FF !important; /* Primary color for right-aligned links */
+  }
+  
+  .right-links .text-light:hover {
+    color: #9FB1BCFF !important; /* Hover effect color for links */
+  }
+  
+  /* Navbar toggle button styling (for mobile view) */
+  .navbar-dark .navbar-toggler {
+    border-color: #BBD0FF;
+  }
+  
+  .navbar-dark .navbar-toggler-icon {
+    background-image: linear-gradient(45deg, #6E8898FF, #BBD0FF);
+  }
+  

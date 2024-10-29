@@ -1,35 +1,50 @@
-import "../css/initialpage.css";
+// src/components/LandingPage.tsx
+
+import React from "react";
+import "../css/LandingPage.css";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
-    <>
-      <h1 className="loginpage">Welcome to your Personal Fitness Tracker</h1>
-
+    <div className="landing-page">
+      <h1 className="title">Welcome to Your Personal Fitness Tracker</h1>
       <p className="content">
         This is an application where you can get assistance on creating a meal
-        plan, workout routine, and also to track your progress to help you
-        toward your fitness goals. We hope you enjoy!
+        plan, workout routine, and track your progress toward your fitness goals.
       </p>
 
-      <a target="_blank" className="logo">
-        <img
-          src="../public/pixel-speech-bubble.gif"
-          className="speechbubble"
-          alt="speechbubble"
-        />
-      </a>
-      <div className="loginbtn">
-               <a target="_blank">
-                 </a>
+      <div className="main-cards">
+        {/* Left-hand Card */}
+        <div className="left-card">
+          {/* Tagline Card */}
+          <div className="tagline-card">
+            <p className="tagline-text">Tagline - Minute Moves... and meals. "xyz"</p>
+          </div>
 
-        <Link to="/Login">
-          <button>Login</button>
-        </Link>
-        <Link to="/CreateAccount">
-          <button>Create Login</button>
-        </Link>
+          {/* Three Cards */}
+          <div className="three-cards">
+            <div className="small-card top-card">
+              <p>Small changes, big results</p>
+            </div>
+            <div className="small-card middle-card">
+              <p>Your goals, your plan</p>
+            </div>
+            <div className="small-card bottom-card">
+              <p>We support your journey</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right-hand Card with Image Cards */}
+        <div className="right-card">
+          <div className="image-card top-image-card">
+            <img src="../public/image1.jpg" alt="Image 1" className="card-image" />
+          </div>
+          <div className="image-card bottom-image-card">
+            <img src="../public/image2.jpg" alt="Image 2" className="card-image" />
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
