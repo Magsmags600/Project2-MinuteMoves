@@ -1,7 +1,8 @@
 import React, { useState } from "react";
  //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
-// import { calculateNutrition } from "../utils/fitnessCalculations";
-// import auth from "../utils/auth"; // Import auth if not already imported
+import { calculateNutrition } from "../utils/fitnessCalculations";
+import auth from "../utils/auth"; // Import auth if not already imported
+import PieChart from "../components/PieChart";
 
 import {
   Card,
@@ -100,20 +101,17 @@ const FitnessPage: React.FC = () => {
             muscleGoal: muscleGoal, // Set muscle goal
         });
 
-        const userId = "dummy-user-id"; // Make sure this is defined
-
-
         //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
-        // const userId = auth.getProfile()?.id; // Make sure this is defined
+        const userId = auth.getProfile()?.id; // Make sure this is defined
 
         if (userId) {
           //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
-            // try {
-            //     const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
-            //     console.log("Nutrition Data:", nutritionData);
-            // } catch (error) {
-            //     console.error("Failed to calculate nutrition:", error);
-            // }
+            try {
+                const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
+                console.log("Nutrition Data:", nutritionData);
+            } catch (error) {
+                console.error("Failed to calculate nutrition:", error);
+            }
         } else {
             alert("User ID not found. Please ensure you're logged in.");
         }
@@ -254,6 +252,7 @@ const FitnessPage: React.FC = () => {
           <Card className="chart-card">
             <Card.Body>
               <Card.Title>Nutrition Breakdown</Card.Title>
+              <PieChart />
             </Card.Body>
           </Card>
         </Col>
