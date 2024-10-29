@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { RecipeData } from "../interfaces/RecipeData"; 
 import { fetchRecipes,fetchUserGoals } from '../api/recipeAPI'; 
 import '../css/MealPage.css';
+import auth from '../utils/auth'; 
+
 
 const MealPage = () => {
     // State for recommended recipes and nutrient goals
@@ -13,7 +15,8 @@ const MealPage = () => {
     useEffect(() => {
       const loadUserGoals = async () => {
         try {
-          const goals = await fetchUserGoals();
+          const id  = auth.getProfile()?.id
+          const goals = await fetchUserGoals(id as any);
           
           const { calories, protein, carbs, fat } = goals;
     
@@ -25,7 +28,7 @@ const MealPage = () => {
           console.error("Failed to fetch user goals:", error);
         }
       };
-    
+      
       loadUserGoals();
     }, []);
 

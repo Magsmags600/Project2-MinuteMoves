@@ -1,10 +1,9 @@
 // src/api/recipeAPI.ts
 import axios from 'axios';
-import auth from '../utils/auth'; 
-const id  = auth.getProfile()?.id
+
 
 // Fetch user-specific nutritional goals
-export const fetchUserGoals = async (): Promise<{ calories: number; protein: number; carbs: number; fat: number }> => {
+export const fetchUserGoals = async (id: number ): Promise<{ calories: number; protein: number; carbs: number; fat: number }> => {
   try {
     const response = await axios.get(`/api/bodyInfo/${id}`); 
     return response.data; 
