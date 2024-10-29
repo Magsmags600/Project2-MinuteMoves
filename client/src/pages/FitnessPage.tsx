@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { calculateNutrition } from "../utils/fitnessCalculations";
-import auth from "../utils/auth"; // Import auth if not already imported
+ //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
+// import { calculateNutrition } from "../utils/fitnessCalculations";
+// import auth from "../utils/auth"; // Import auth if not already imported
 
 import {
   Card,
@@ -46,7 +47,13 @@ const FitnessPage: React.FC = () => {
       "Thursday",
       "Friday",
       "Saturday",
-      "Sunday",
+      "Day 1:",
+      "Day 2",
+      "Day 3",
+      "Day 4",
+      "Day 5",
+      "Day 6",
+      "Day 7"
     ];
     return days.some((day) => line.startsWith(day));
   };
@@ -64,7 +71,8 @@ const FitnessPage: React.FC = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const workoutLines = data.response.split("\n");
+        const response = data.response.replace(/\n\n/g,"\r\n");
+        const workoutLines = response.split("\n");
         setWorkoutData(workoutLines);
         setCompletedItems(new Array(workoutLines.length).fill(false));
       })
@@ -92,23 +100,28 @@ const FitnessPage: React.FC = () => {
             muscleGoal: muscleGoal, // Set muscle goal
         });
 
-        const userId = auth.getProfile()?.id; // Make sure this is defined
+        const userId = "dummy-user-id"; // Make sure this is defined
+
+
+        //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
+        // const userId = auth.getProfile()?.id; // Make sure this is defined
 
         if (userId) {
-            try {
-                const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
-                console.log("Nutrition Data:", nutritionData);
-            } catch (error) {
-                console.error("Failed to calculate nutrition:", error);
-            }
+          //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
+            // try {
+            //     const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
+            //     console.log("Nutrition Data:", nutritionData);
+            // } catch (error) {
+            //     console.error("Failed to calculate nutrition:", error);
+            // }
         } else {
             alert("User ID not found. Please ensure you're logged in.");
         }
-
+        userPlan();
         handleClose();
-    } else {
+      } else {
         alert("Please fill in all fields.");
-    }
+      }
 };
 
   const handleCheckboxChange = (index: number) => {
@@ -223,6 +236,10 @@ const FitnessPage: React.FC = () => {
                     <td>Activity Level:</td>
                     <td>{userProfile.activityLevel}</td>
                   </tr>
+                  {/* <tr>
+                    <td>Muscle Goal:</td>
+                    <td>{userProfile.muscleGoal}</td>
+                  </tr> */}
                 </tbody>
               </table>
               {/* Button to open modal */}
@@ -277,11 +294,8 @@ const FitnessPage: React.FC = () => {
                         />
                       )
                     )
-                  : "This is a placeholder for future content."}
+                  : "Workout plan generated after filling out User Profile"}
               </div>
-              <Button variant="primary" onClick={userPlan}>
-                Get Workout Plan
-              </Button>
             </Card.Body>
           </Card>
         </Col>
