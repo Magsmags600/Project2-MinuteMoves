@@ -31,14 +31,14 @@ const formatPrompt = async (nutritionalGoals: { calories: number, protein: numbe
   return await promptTemplate.format(nutritionalGoals);
 };
 
-const promptFunc = async (input: string): Promise<string> => {
+const promptFunc = async (formattedPrompt: string): Promise<string> => {
   try {
     if (model) {
-      return await model.invoke(input);
+      return await model.invoke(formattedPrompt);
     }
     return 'No OpenAI API key provided. Unable to provide a response.';
   } catch (err) {
-    console.error(err);
+    console.error('Error invoking OpenAI model:', err);
     throw err;
   }
 };
