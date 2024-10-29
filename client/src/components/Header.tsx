@@ -29,6 +29,7 @@ const Header: React.FC = () => {
             {/* Right-aligned Links */}
             <div className="right-links">
               <Link to="/fitnesspage" className="text-light me-3">Your Plan</Link>
+              <Link to="/mealpage" className="text-light me-3">Your Meal</Link>
               <Link to="/Login" className="text-light me-3">Login</Link>
               <Link to="/CreateAccount" className="text-light">Create Account</Link>
             </div>

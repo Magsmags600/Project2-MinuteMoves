@@ -47,36 +47,3 @@ function App() {
 export default App;
 
 
-// import { Route, Routes } from 'react-router-dom';
-// import Header from './components/Header';
-// import Footer from './components/Footer';
-// import LandingPage from './pages/landingpage';
-// import Legal from './pages/Legal';
-
-// function App() {
-//   return (
-//     <div>
-//       <Header /> {/* Displayed on every page */}
-      
-//       <main className="container pt-5">
-//         <Routes>
-//           {/* Route for the landing page */}
-//           <Route path="/" element={<LandingPage />} />
-
-//           {/* Routes for Legal component sections */}
-//           <Route path="/about" element={<Legal section="about" />} />
-//           <Route path="/privacy" element={<Legal section="privacy" />} />
-//           <Route path="/terms" element={<Legal section="terms" />} />
-//           <Route path="/contact" element={<Legal section="contact" />} />
-
-//           {/* Catch-all route for undefined paths */}
-//           <Route path="*" element={<LandingPage />} />
-//         </Routes>
-//       </main>
-
-//       <Footer /> {/* Displayed on every page */}
-//     </div>
-//   );
-// }
-
-// export default App;
