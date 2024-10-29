@@ -46,15 +46,17 @@ const promptFunc = async (formattedPrompt: string): Promise<string> => {
 // Endpoint for meal recommendations based on goals
 export const getMealRecommendations = async (req: Request, res: Response): Promise<void> => {
   const { calories, protein, carbs, fat } = req.body;
-
+console.log(req.body, "hello!");
   try {
     if (!calories || !protein || !carbs || !fat) {
       res.status(400).json({ error: 'Please provide calories, protein, carbs, and fat goals.' });
       return;
     }
-
+console.log("check 1");
     const formattedPrompt: string = await formatPrompt({ calories, protein, carbs, fat });
+    console.log("check 2");
     const result: any = await promptFunc(formattedPrompt);
+    console.log(result);
     res.json({ result });
   } catch (error: unknown) {
     if (error instanceof Error) {

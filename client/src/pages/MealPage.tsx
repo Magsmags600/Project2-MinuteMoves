@@ -17,7 +17,7 @@ const MealPage = () => {
         try {
           const id  = auth.getProfile()?.id
           const goals = await fetchUserGoals(id as any);
-          
+          console.log(goals);
           const { calories, protein, carbs, fat } = goals;
     
 
@@ -36,7 +36,9 @@ const MealPage = () => {
       const loadRecipes = async () => {
         if (userGoals) {
           try {
+            console.log(userGoals); 
             const fetchedRecipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
+            console.log(fetchRecipes);
             setRecipes(fetchedRecipes);
           } catch (error) {
             console.error("Failed to fetch recipes:", error);
@@ -54,22 +56,10 @@ const MealPage = () => {
       <p>Based on your intake survey, here are some meal suggestions!</p>
 
       <div className="meal-list">
-        {recipes.length > 0 ? (
-          recipes.map((recipe) => (
-            <div key={recipe.id} className="recipe-card">
-              <h3>{recipe.name}</h3>
-              <p>Calories: {recipe.calories}</p>
-              <p>Protein: {recipe.protein}g</p>
-              <p>Carbs: {recipe.carbs}g</p>
-              <p>Fat: {recipe.fat}g</p>
-              <Link to={`/recipe/${recipe.id}`}>
-                <button>View Recipe</button>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p>No recipes match your targets yet. Try adjusting your survey answers.</p>
-        )}
+        {recipes ? (
+          <div> {recipes}</div>
+        ) : (<div></div>)}
+
       </div>
     </div>
   );
