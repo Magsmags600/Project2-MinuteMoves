@@ -20,15 +20,8 @@ export default function LandingPage() {
         />
       </a>
       <div className="loginbtn">
-        <h1>Powered By</h1>
-
-        <a target="_blank">
-          <img
-            src="../public/OpenAI-logo.png"
-            className="chatgptImage"
-            alt="chatgptlogo"
-          />
-        </a>
+               <a target="_blank">
+                 </a>
 
         <Link to="/Login">
           <button>Login</button>

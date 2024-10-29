@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           {/* Left side content */}
           <div className="footer-left">
             <img
-              src="path/to/logo-placeholder.png"
+              src="../assets/OpenAI-logo.png"
               alt="Logo"
               width="30"
               height="30"
