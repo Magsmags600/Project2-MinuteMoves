@@ -1,26 +1,49 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RecipeData } from "../interfaces/RecipeData"; // Define this to structure your recipe info
-// import { fetchRecipes } from '../api/recipeAPI'; // Define this to structure your recipe API call
+import { RecipeData } from "../interfaces/RecipeData"; 
+import { fetchRecipes,fetchUserGoals } from '../api/recipeAPI'; 
 import '../css/MealPage.css';
 
 const MealPage = () => {
     // State for recommended recipes and nutrient goals
-    const [recipes] = useState<RecipeData[]>([]);
+    const [recipes, setRecipes] = useState<RecipeData[]>([]);
+    const [userGoals, setUserGoals] = useState<{ calories: number; protein: number; carbs: number; fat: number } | null>(null);
 
-      // Fetch recipes based on nutrient goals
-    const fetchRecommendedRecipes = async () => {
+        
+    useEffect(() => {
+      const loadUserGoals = async () => {
         try {
-      
-        } catch (err) {
-          console.error('Failed to retrieve recipes:', err);
+          const goals = await fetchUserGoals();
+          
+          const { calories, protein, carbs, fat } = goals;
+    
+
+          const filteredGoals = { calories, protein, carbs, fat };
+    
+          setUserGoals(filteredGoals); // Store only the filtered goals in state
+        } catch (error) {
+          console.error("Failed to fetch user goals:", error);
         }
       };
+    
+      loadUserGoals();
+    }, []);
 
-        // Use effect to load recipes based on goals (set from intake survey)
-  useEffect(() => {
-    fetchRecommendedRecipes();
-  });
+    useEffect(() => {
+      const loadRecipes = async () => {
+        if (userGoals) {
+          try {
+            const fetchedRecipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
+            setRecipes(fetchedRecipes);
+          } catch (error) {
+            console.error("Failed to fetch recipes:", error);
+          }
+        }
+      };
+      
+          loadRecipes();  // Run the load function when MealPage mounts
+        }, [userGoals]);
+      
 
   return (
     <div className="meal-page">
