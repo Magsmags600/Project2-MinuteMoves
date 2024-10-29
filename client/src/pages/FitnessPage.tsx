@@ -59,10 +59,9 @@ const FitnessPage: React.FC = () => {
   };
 
   const userPlan = () => {
-    const { weight, height, age, gender, activityLevel, muscleGoal } = userProfile; // Include muscle goal
     const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with weight ${weight}, height ${height}, activity level ${activityLevel}, and muscle goal of ${muscleGoal}`;
 
-    fetch("api/translate", {
+    fetch("api/workoutplan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
