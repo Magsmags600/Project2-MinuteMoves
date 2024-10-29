@@ -1,23 +1,14 @@
-// src/utils/fitnessCalculations.ts
-
 import { BodyInfo } from '../interfaces/BodyInfo';
 
-interface MacronutrientBreakdown {
-  totalCalories: number;
-  protein: number; // grams
-  fats: number; // grams
-  carbohydrates: number; // grams
-}
-
-export function calculateNutrition(
-  bodyInfo: BodyInfo,
+export async function calculateNutrition(
   weight: number,
   height: number,
   age: number,
   gender: string,
-  activityLevel: string
-): MacronutrientBreakdown {
-  // Calculate BMR using Mifflin-St Jeor Equation
+  activityLevel: string,
+  muscleGoal: string, // New parameter
+  userId: number
+): Promise<void> {
   let bmr: number;
   if (gender === 'male') {
     bmr = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -25,7 +16,6 @@ export function calculateNutrition(
     bmr = 10 * weight + 6.25 * height - 5 * age - 161;
   }
 
-  // Calculate TDEE based on activity level
   let tdee: number;
   switch (activityLevel) {
     case 'sedentary':
@@ -44,32 +34,58 @@ export function calculateNutrition(
       tdee = bmr * 1.9;
       break;
     default:
-      tdee = bmr; // Default to BMR if activity level is unknown
+      tdee = bmr;
   }
 
-  // Adjust TDEE based on weight goal percentage
-  const adjustmentFactor = bodyInfo.percentage / 100; // Convert percentage to decimal
-  const adjustedCalories = tdee * (1 + adjustmentFactor); // Increase for weight gain or decrease for weight loss
+  // Define the adjustment factor based on muscleGoal
+  let adjustmentFactor: number;
 
-  // Macronutrient distribution (in % of adjusted calories)
-  const proteinPercentage = 0.25; // 25%
-  const fatsPercentage = 0.30; // 30%
-  const carbohydratesPercentage = 0.45; // 45%
+  if (muscleGoal === 'lose weight') {
+    adjustmentFactor = -0.10; // Decrease calories by 10%
+  } else {
+    adjustmentFactor = 0.10; // Increase calories by 10%
+  }
 
-  // Calculate calories for each macronutrient
+  const adjustedCalories = tdee * (1 + adjustmentFactor);
+
+  const proteinPercentage = 0.25;
+  const fatsPercentage = 0.30;
+  const carbohydratesPercentage = 0.45;
+
   const proteinCalories = adjustedCalories * proteinPercentage;
   const fatsCalories = adjustedCalories * fatsPercentage;
   const carbohydratesCalories = adjustedCalories * carbohydratesPercentage;
 
-  // Convert calories to grams
-  const protein = proteinCalories / 4; // 4 calories per gram
-  const fats = fatsCalories / 9; // 9 calories per gram
-  const carbohydrates = carbohydratesCalories / 4; // 4 calories per gram
+  const protein = proteinCalories / 4;
+  const fats = fatsCalories / 9;
+  const carbohydrates = carbohydratesCalories / 4;
 
-  return {
-    totalCalories: Math.round(adjustedCalories),
+  // Construct the BodyInfo data object
+  const bodyInfoData: BodyInfo = {
+    calories: Math.round(adjustedCalories),
     protein: Math.round(protein),
-    fats: Math.round(fats),
-    carbohydrates: Math.round(carbohydrates),
+    carbs: Math.round(carbohydrates),
+    fat: Math.round(fats),
+    percentage: 10,
+    userId: userId,
   };
+
+  // Send the data to the backend
+  try {
+    const response = await fetch('/api/bodyInfo/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyInfoData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    console.log('BodyInfo data created successfully');
+  } catch (error) {
+    console.error('Failed to create BodyInfo:', error);
+  }
 }

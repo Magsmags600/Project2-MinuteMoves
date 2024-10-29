@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { calculateNutrition } from "../utils/fitnessCalculations";
+import auth from "../utils/auth"; // Import auth if not already imported
+
 import {
   Card,
   Button,
@@ -18,6 +21,7 @@ const FitnessPage: React.FC = () => {
   const [age, setAge] = useState<number | "">("");
   const [gender, setGender] = useState<string>("");
   const [activityLevel, setActivityLevel] = useState<string>("");
+  const [muscleGoal, setMuscleGoal] = useState<string>(""); // New state for muscle goal
 
   const [userProfile, setUserProfile] = useState({
     weight: "",
@@ -25,6 +29,7 @@ const FitnessPage: React.FC = () => {
     age: "",
     gender: "",
     activityLevel: "",
+    muscleGoal: "", // Add muscle goal to user profile
   });
 
   const [workoutData, setWorkoutData] = useState<string[]>([]);
@@ -32,7 +37,7 @@ const FitnessPage: React.FC = () => {
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
-// Days of the week
+
   const isDayOfWeek = (line: string) => {
     const days = [
       "Monday",
@@ -47,8 +52,8 @@ const FitnessPage: React.FC = () => {
   };
 
   const userPlan = () => {
-    const { weight, height, age, gender, activityLevel } = userProfile;
-    const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with weight ${weight}, height ${height}, and activity level ${activityLevel}`;
+    const { weight, height, age, gender, activityLevel, muscleGoal } = userProfile; // Include muscle goal
+    const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with weight ${weight}, height ${height}, activity level ${activityLevel}, and muscle goal of ${muscleGoal}`;
 
     fetch("api/translate", {
       method: "POST",
@@ -68,28 +73,43 @@ const FitnessPage: React.FC = () => {
       });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (
-      typeof weight === "number" &&
-      typeof height === "number" &&
-      typeof age === "number" &&
-      gender &&
-      activityLevel
+        typeof weight === "number" &&
+        typeof height === "number" &&
+        typeof age === "number" &&
+        gender &&
+        activityLevel &&
+        muscleGoal // Ensure muscle goal is set
     ) {
-      setUserProfile({
-        weight: `${weight} kg`,
-        height: `${height} cm`,
-        age: `${age} years`,
-        gender: gender.charAt(0).toUpperCase() + gender.slice(1),
-        activityLevel: activityLevel,
-      });
+        setUserProfile({
+            weight: `${weight} kg`,
+            height: `${height} cm`,
+            age: `${age} years`,
+            gender: gender.charAt(0).toUpperCase() + gender.slice(1),
+            activityLevel: activityLevel,
+            muscleGoal: muscleGoal, // Set muscle goal
+        });
 
-      handleClose();
+        const userId = auth.getProfile()?.id; // Make sure this is defined
+
+        if (userId) {
+            try {
+                const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
+                console.log("Nutrition Data:", nutritionData);
+            } catch (error) {
+                console.error("Failed to calculate nutrition:", error);
+            }
+        } else {
+            alert("User ID not found. Please ensure you're logged in.");
+        }
+
+        handleClose();
     } else {
-      alert("Please fill in all fields.");
+        alert("Please fill in all fields.");
     }
-  };
+};
 
   const handleCheckboxChange = (index: number) => {
     const updatedCompletedItems = [...completedItems];
@@ -156,6 +176,17 @@ const FitnessPage: React.FC = () => {
                 <option value="moderately active">Moderately Active</option>
                 <option value="very active">Very Active</option>
                 <option value="super active">Super Active</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group controlId="formMuscleGoal">
+              <Form.Label>Muscle Goal</Form.Label>
+              <Form.Select
+                value={muscleGoal}
+                onChange={(e) => setMuscleGoal(e.target.value)}
+              >
+                <option value="">Select Goal</option>
+                <option value="gain muscle">Gain Muscle</option>
+                <option value="lose weight">Lose Weight</option>
               </Form.Select>
             </Form.Group>
             <Button variant="primary" type="submit">
