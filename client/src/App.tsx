@@ -27,10 +27,6 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // import Navbar from './components/Navbar';
-// import SuccessStories from './pages/SuccessStories'; // Adjust path as needed
-
-// Inside App component routes
-{/* <Route path="/successstories" component={SuccessStories} /> */}
 
 
 function App() {

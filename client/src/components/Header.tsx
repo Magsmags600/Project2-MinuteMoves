@@ -41,13 +41,13 @@ const Header: React.FC = () => {
           {/* Placeholder for Logo */}
           <Navbar.Brand href="/">
             <img
-              src="path/to/logo-placeholder.png"
+              src="client\src\assets\a49e2f20-d56d-4bc6-a68e-bcbfcc882b75.webp"
               alt="Logo"
               width="30"
               height="30"
               className="d-inline-block align-top"
             />
-            {' '}Fitness Tracker
+            {' '}MinuteMoves
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbar" />
@@ -55,8 +55,7 @@ const Header: React.FC = () => {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/fitnesspage">Fitness Page</Nav.Link>
               <Nav.Link as={Link} to="/mealpage">Meal Plan</Nav.Link>
-              <Nav.Link as={Link} to="/successstories">Success Stories</Nav.Link>
-              <Nav.Link as={Link} to="/">Sign Out</Nav.Link>
+              {/* <Nav.Link as={Link} to="/">Sign Out</Nav.Link> */}
             </Nav>
             {/* Placeholder for Login Button */}
             <Button variant="outline-light" className="ms-auto">Login</Button>
