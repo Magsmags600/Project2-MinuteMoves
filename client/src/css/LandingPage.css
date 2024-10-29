@@ -15,7 +15,7 @@
 }
 
 .content {
-  color: rgb(110, 152, 150);
+  color: #6E8898FF;
   font-size: 1.1rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -25,25 +25,25 @@
 /* Main Cards Container */
 .main-cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
 }
 
-/* Left Card */
+/* Left and Right Card Containers */
 .left-card,
 .right-card {
   flex: 1;
-  padding: 1rem;
-  background-color: #caa453;
+  padding: 1.5rem;
+  background-color: #2b74c2;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 /* Tagline Card */
 .tagline-card {
-  background-color: #BBD0FF;
+  background-color: #d46108;
   padding: 1rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -51,7 +51,7 @@
 }
 
 .tagline-text {
-  color: #2E5266FF;
+  color: rgb(220, 230, 236);
   font-weight: bold;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .small-card {
-  background-color: rgb(159, 187, 188);
+  background-color: #9FB1BCFF;
   padding: 1rem;
   text-align: center;
   border-radius: 6px;
@@ -76,9 +76,22 @@
   color: #2E5266FF;
 }
 
+/* Image Placeholder Below Three Cards */
+.image-placeholder {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
 /* Right Card with Images */
 .image-card {
-  background-color: rgb(15, 5, 5);
+  background-color: rgb(58, 59, 60);
   padding: 1rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -89,4 +102,15 @@
   width: 100%;
   height: auto;
   border-radius: 6px;
+}
+
+/* Text Cards Below Image Card in Right Section */
+.text-card {
+  background-color: #9FB1BCFF;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  color: #2E5266FF;
+  font-size: 1rem;
 }

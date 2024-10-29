@@ -5,7 +5,7 @@ import { Navbar, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/minutemoves.png';
+import logo from '../assets/Logopic.png';
 
 const Header: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             <img
               src={logo}
               alt="Logo"
-              width="50"  // Adjusted width
+              width="170"  // Adjusted width
               height="50" // Adjusted height
               className="d-inline-block align-top"
             />

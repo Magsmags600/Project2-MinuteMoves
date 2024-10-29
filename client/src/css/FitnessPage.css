@@ -8,7 +8,7 @@
 
 /* Main Container Card */
 .main-container-card {
-  background-color: #B8C0FF; /* Consistent card background color */
+  background-color: #2b74c2; /* Updated card background color */
   padding: 2rem; /* Equal padding around the card */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 .chart-card,
 .meal-card,
 .placeholder-card {
-  background-color: #BBD0FF; /* Inner card color */
+  background-color: #BBD0FF; /* Updated inner card color */
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -38,6 +38,7 @@
 .profile-table td {
   padding: 8px;
   border-bottom: 1px solid #9FB1BCFF; /* Border color to match scheme */
+  color: #2E5266FF;
 }
 
 /* Chart Card */
@@ -51,18 +52,18 @@
 /* Meal Card Button */
 .meal-card .btn {
   margin-top: 10px;
-  background-color: #6E8898FF; /* Button background color */
+  background-color: #d46108; /* Updated button background color */
   color: #FFFFFF; /* Button text color */
   border: none;
 }
 
 .meal-card .btn:hover {
-  background-color: #9FB1BCFF; /* Hover color for button */
+  background-color: #9FB1BCFF; /* Updated hover color for button */
 }
 
 /* Placeholder Card */
 .placeholder-card {
-  background-color: #BBD0FF;
+  background-color: rgb(58, 59, 60); /* Darker color for placeholder card */
   color: #6E8898FF;
   text-align: center;
   padding: 1rem;
