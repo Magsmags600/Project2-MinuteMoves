@@ -34,6 +34,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/mealpage',
+        element: <Mealpage />,
+      },
+      {
+        path: '/mealpage',
+        element: <Legal />,
+      },
+      {
+        path: '/mealpage',
         element: <MealPage />,
       },
     ],
