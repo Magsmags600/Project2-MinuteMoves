@@ -12,6 +12,7 @@ import MealPage from './pages/MealPage.tsx';
 import Legal from './pages/Legal.tsx';
 import Contact from './pages/Contact.tsx';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
