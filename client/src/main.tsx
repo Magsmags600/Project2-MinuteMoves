@@ -9,6 +9,9 @@ import LandingPage from './pages/landingpage.tsx';
 import CreateAccount from './pages/CreateAccount.tsx';
 import FitnessPage from './pages/FitnessPage.tsx';
 import MealPage from './pages/MealPage.tsx';
+import Legal from './pages/Legal.tsx';
+import Contact from './pages/Contact.tsx';
+
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/mealpage',
         element: <MealPage />,
+      },
+      {
+        path: '/legal',
+        element: <Legal />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       },
     ],
   },

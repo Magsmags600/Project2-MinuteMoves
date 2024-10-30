@@ -21,12 +21,18 @@
 .profile-card,
 .chart-card,
 .meal-card,
-.placeholder-card {
+.placeholder-card{
   background-color: #BBD0FF; /* Updated inner card color */
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #2E5266FF;
+}
+.workout-card{
+  background-color: #BBD0FF;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 /* Profile Table */

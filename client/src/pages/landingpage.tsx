@@ -1,8 +1,7 @@
 // src/components/LandingPage.tsx
-
-import React from "react";
+// import React from "react";
 import "../css/LandingPage.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import colorful from '../assets/MinuteMovesColorful.png';
 import logo from '../assets/Logopic.png';
 
