@@ -1,4 +1,3 @@
-// client/src/components/PieChart.jsx
 import { useState, useEffect } from "react";
 import { AgCharts } from "ag-charts-react";
 import auth from "../utils/auth";

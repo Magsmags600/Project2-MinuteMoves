@@ -8,7 +8,8 @@ const Legal: React.FC = () => {
       <section style={styles.section}>
         <h2 style={styles.heading}>About MinuteMoves</h2>
         <p style={styles.text}>
-          MinuteMoves is designed to help you achieve your fitness and wellness goals efficiently and effectively...
+          MinuteMoves is designed to help you achieve your fitness and wellness
+          goals efficiently and effectively...
         </p>
       </section>
 
@@ -28,7 +29,9 @@ const Legal: React.FC = () => {
 
       <section style={styles.section}>
         <h2 style={styles.heading}>Contact Us</h2>
-        <p style={styles.text}>If you have any questions, feel free to reach out to us:</p>
+        <p style={styles.text}>
+          If you have any questions, feel free to reach out to us:
+        </p>
         <p style={styles.text}>Email: support@minutemoves.com</p>
         <p style={styles.text}>Phone: +1 (123) 456-7890</p>
       </section>

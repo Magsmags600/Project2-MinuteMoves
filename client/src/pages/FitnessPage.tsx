@@ -58,7 +58,7 @@ const FitnessPage: React.FC = () => {
   };
 
   const userPlan = () => {
-    const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with weight ${weight}, height ${height}, activity level ${activityLevel}, and muscle goal of ${muscleGoal}`;
+    const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with a weight of ${weight} kg, height ${height} cm, activity level ${activityLevel}, and muscle goal of ${muscleGoal}`;
 
     setLoading(true);
     fetch("api/workoutplan", {
@@ -90,7 +90,7 @@ const FitnessPage: React.FC = () => {
       typeof age === "number" &&
       gender &&
       activityLevel &&
-      muscleGoal // Ensure muscle goal is set
+      muscleGoal 
     ) {
       setUserProfile({
         weight: `${weight} kg`,
@@ -136,7 +136,6 @@ const FitnessPage: React.FC = () => {
 
   return (
     <Container className="fitness-page">
-      {/* Modal for user input */}
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create New Goal</Modal.Title>
@@ -240,13 +239,8 @@ const FitnessPage: React.FC = () => {
                     <td>Activity Level:</td>
                     <td>{userProfile.activityLevel}</td>
                   </tr>
-                  {/* <tr>
-                    <td>Muscle Goal:</td>
-                    <td>{userProfile.muscleGoal}</td>
-                  </tr> */}
                 </tbody>
               </table>
-              {/* Button to open modal */}
               <Button variant="primary" onClick={handleShow}>
                 Create New Goal
               </Button>
