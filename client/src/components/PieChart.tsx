@@ -1,15 +1,11 @@
 // client/src/components/PieChart.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AgCharts } from "ag-charts-react";
+import auth from "../utils/auth";
 
 const PieChart = () => {
-  // Dummy data for protein, fat, and carbs
-  const [options] = useState({
-    data: [
-      { asset: "Protein", amount: 30 },
-      { asset: "Fat", amount: 20 },
-      { asset: "Carbs", amount: 50 },
-    ],
+  const [options, setOptions] = useState({
+    data: [],
     title: {
       text: "Nutritional Composition",
     },
@@ -20,10 +16,43 @@ const PieChart = () => {
         legendItemKey: "asset",
       },
     ],
+  });
+  const [calories, setCalories] = useState(0); // State for calories
+  const userId = auth.getProfile()?.id;
 
-  } as any);
+  useEffect(() => {
+    const fetchBodyInfo = async () => {
+      try {
+        const response = await fetch(`/api/bodyInfo/${userId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch body info");
+        }
+        const data = await response.json();
+        console.log(data);
 
-  return <AgCharts options={options} />;
+        const { protein, fat, carbs, calories } = data;
+        console.log(protein);
+        setOptions({...options, data: [{asset: "Protein", amount: protein}, {asset: "Fat", amount: fat}, {asset: "Carbs", amount: carbs}] } as any);
+
+        setCalories(calories);
+      } catch (error) {
+        console.error("Error fetching body info:", error);
+      }
+    };
+
+    if (userId) {
+      fetchBodyInfo();
+    }
+  }, [userId]);
+
+  return (
+    <div>
+      <AgCharts options={options as any}/>
+      <div>
+        <h3>Total Calories: {calories}</h3>
+      </div>
+    </div>
+  );
 };
 
 export default PieChart;

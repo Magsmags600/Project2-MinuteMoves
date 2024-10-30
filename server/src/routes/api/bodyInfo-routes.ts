@@ -9,16 +9,17 @@ router.get('/:id', async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
         // Find BodyInfo by ID, including associated User
-        const bodyInfo = await User.findOne({
+        const bodyInfo: any = await User.findOne({
             where: { id },
             include: [{ model: BodyInfo }],
         });
-            console.log(bodyInfo);
+        const test = bodyInfo?.dataValues.BodyInfo.dataValues;
+        console.log(bodyInfo?.dataValues.BodyInfo.dataValues);
         if (!bodyInfo) {
             return res.status(404).json({ message: 'Body info not found' });
         }
 
-        return res.status(200).json(bodyInfo);
+        return res.status(200).json(test);
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
     }
