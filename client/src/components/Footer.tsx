@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Nav, Container } from 'react-bootstrap'; // Removed Navbar import
+import { Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css';
 import { Link } from 'react-router-dom';

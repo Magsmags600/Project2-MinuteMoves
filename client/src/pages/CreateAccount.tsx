@@ -1,5 +1,3 @@
-// src/components/CreateAccount.tsx
-
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { signUp } from "../api/authAPI";

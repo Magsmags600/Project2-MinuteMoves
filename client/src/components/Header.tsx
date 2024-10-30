@@ -1,5 +1,3 @@
-// src/components/Header.tsx
-
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,8 +15,8 @@ const Header: React.FC = () => {
             <img
               src={logo}
               alt="Logo"
-              width="170"  // Adjusted width
-              height="50" // Adjusted height
+              width="170" 
+              height="50"
               className="d-inline-block align-top"
             />
             <span className="ms-2 large-brand-name">MinuteMoves</span>
