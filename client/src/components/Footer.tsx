@@ -70,10 +70,8 @@ const Footer: React.FC = () => {
 
           {/* Right side content with link styling to match header */}
           <Nav className="footer-nav d-flex">
-            <Link to="/about" className="text-light me-3 small-text">About</Link>
             <Link to="/contact" className="text-light me-3 small-text">Contact</Link>
-            <Link to="/privacy" className="text-light me-3 small-text">Privacy Policy</Link>
-            <Link to="/terms" className="text-light small-text">Terms and Conditions</Link>
+            <Link to="/legal" className="text-light small-text">Terms and Conditions</Link>
           </Nav>
         </div>
 
