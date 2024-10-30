@@ -1,0 +1,56 @@
+* {
+  margin-top: 80px;
+}
+
+.loginbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+}
+
+.loginbtn button {
+  margin: 100px;
+  padding: 10px 20px;
+  font-size: 30px;
+  border-radius: 30px;
+}
+
+.loginbtn button:hover{
+background-color: blue;
+color: white;
+}
+
+.loginbtn h1 {
+  /* font-size: 20px;
+  font-weight: 200; */
+  margin-top: 110px;
+  margin-right: 20px;
+}
+
+
+.loginpage {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 50px;
+
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+img.chatgptImage {
+  margin-top: -100px;
+  height: 200px;
+  width: 200px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  }
+
