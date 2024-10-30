@@ -271,7 +271,7 @@ const FitnessPage: React.FC = () => {
         </Col>
 
         <Col md={6}>
-          <Card className="placeholder-card">
+          <Card className="workout-card">
             <Card.Body>
               <Card.Title>Workout Plan</Card.Title>
               <div className="workout-list">
