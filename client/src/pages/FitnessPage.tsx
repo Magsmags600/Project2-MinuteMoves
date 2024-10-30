@@ -11,7 +11,6 @@ import {
   Modal,
   Form,
 } from "react-bootstrap";
-import "chart.js/auto";
 import "../css/FitnessPage.css";
 
 const FitnessPage: React.FC = () => {
