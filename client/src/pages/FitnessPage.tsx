@@ -31,7 +31,7 @@ const FitnessPage: React.FC = () => {
     age: "",
     gender: "",
     activityLevel: "",
-    muscleGoal: "", // Add muscle goal to user profile
+    muscleGoal: "", 
   });
 
   const [workoutData, setWorkoutData] = useState<string[]>([]);

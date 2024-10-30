@@ -1,59 +1,37 @@
-// src/pages/Legal.tsx
-
 import React from "react";
 
-interface LegalProps {
-  section: "about" | "privacy" | "terms" | "contact";
-}
-
-const Legal: React.FC<LegalProps> = ({ section }) => {
-  const renderContent = () => {
-    switch (section) {
-      case "about":
-        return (
-          <section style={styles.section}>
-            <h2 style={styles.heading}>About MinuteMoves</h2>
-            <p style={styles.text}>
-              MinuteMoves is designed to help you achieve your fitness and wellness goals efficiently and effectively...
-            </p>
-          </section>
-        );
-      case "privacy":
-        return (
-          <section style={styles.section}>
-            <h2 style={styles.heading}>Data Privacy Policy</h2>
-            <p style={styles.text}>
-              MinuteMoves is committed to protecting your personal information...
-            </p>
-          </section>
-        );
-      case "terms":
-        return (
-          <section style={styles.section}>
-            <h2 style={styles.heading}>Terms and Conditions</h2>
-            <p style={styles.text}>
-              Welcome to MinuteMoves. By accessing and using this application...
-            </p>
-          </section>
-        );
-      case "contact":
-        return (
-          <section style={styles.section}>
-            <h2 style={styles.heading}>Contact Us</h2>
-            <p style={styles.text}>If you have any questions, feel free to reach out to us:</p>
-            <p style={styles.text}>Email: support@minutemoves.com</p>
-            <p style={styles.text}>Phone: +1 (123) 456-7890</p>
-          </section>
-        );
-      default:
-        return null;
-    }
-  };
-
+const Legal: React.FC = () => {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Legal Information</h1>
-      {renderContent()}
+
+      <section style={styles.section}>
+        <h2 style={styles.heading}>About MinuteMoves</h2>
+        <p style={styles.text}>
+          MinuteMoves is designed to help you achieve your fitness and wellness goals efficiently and effectively...
+        </p>
+      </section>
+
+      <section style={styles.section}>
+        <h2 style={styles.heading}>Data Privacy Policy</h2>
+        <p style={styles.text}>
+          MinuteMoves is committed to protecting your personal information...
+        </p>
+      </section>
+
+      <section style={styles.section}>
+        <h2 style={styles.heading}>Terms and Conditions</h2>
+        <p style={styles.text}>
+          Welcome to MinuteMoves. By accessing and using this application...
+        </p>
+      </section>
+
+      <section style={styles.section}>
+        <h2 style={styles.heading}>Contact Us</h2>
+        <p style={styles.text}>If you have any questions, feel free to reach out to us:</p>
+        <p style={styles.text}>Email: support@minutemoves.com</p>
+        <p style={styles.text}>Phone: +1 (123) 456-7890</p>
+      </section>
     </div>
   );
 };
