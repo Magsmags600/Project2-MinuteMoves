@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-
 import { fetchRecipes,fetchUserGoals } from '../api/recipeAPI'; 
 import '../css/MealPage.css';
 import auth from '../utils/auth'; 
@@ -10,7 +8,9 @@ const MealPage = () => {
     // State for recommended recipes and nutrient goals
     const [userGoals, setUserGoals] = useState<{ calories: number; protein: number; carbs: number; fat: number } | null>(null);
     const [fetchedRecipes, setFetchedRecipes] = useState<string | null>(null);
-        
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    
     useEffect(() => {
       const loadUserGoals = async () => {
         try {
@@ -37,6 +37,7 @@ const MealPage = () => {
             console.log(userGoals); 
             const recipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
             setFetchedRecipes(recipes);
+            setIsLoaded(true);
           } catch (error) {
             console.error("Failed to fetch recipes:", error);
           }
@@ -51,7 +52,7 @@ const MealPage = () => {
     <div className="meal-page">
       <h2>Your Recommended Meals</h2>
       <p>Based on your stats, here are some meal suggestions!</p>
-      {fetchedRecipes ? (
+      {isLoaded && fetchedRecipes ? (
         <div>
         {fetchedRecipes.split(/(?=Meal Idea)/g).map((meal, index) => (
           <div key={index} style={{ border: "1px solid #ddd", padding: "1em", marginBottom: "1em" }}>
