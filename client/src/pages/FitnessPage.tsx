@@ -1,9 +1,7 @@
 import React, { useState } from "react";
- //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
 import { calculateNutrition } from "../utils/fitnessCalculations";
-import auth from "../utils/auth"; // Import auth if not already imported
+import auth from "../utils/auth";
 import PieChart from "../components/PieChart";
-
 import {
   Card,
   Button,
@@ -31,12 +29,12 @@ const FitnessPage: React.FC = () => {
     age: "",
     gender: "",
     activityLevel: "",
-    muscleGoal: "", 
+    muscleGoal: "",
   });
 
   const [workoutData, setWorkoutData] = useState<string[]>([]);
   const [completedItems, setCompletedItems] = useState<boolean[]>([]);
-
+  const [loading, setLoading] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
@@ -54,7 +52,7 @@ const FitnessPage: React.FC = () => {
       "Day 4",
       "Day 5",
       "Day 6",
-      "Day 7"
+      "Day 7",
     ];
     return days.some((day) => line.startsWith(day));
   };
@@ -62,6 +60,7 @@ const FitnessPage: React.FC = () => {
   const userPlan = () => {
     const requestText = `Create a seven day workout plan for a ${age} year old ${gender} with weight ${weight}, height ${height}, activity level ${activityLevel}, and muscle goal of ${muscleGoal}`;
 
+    setLoading(true);
     fetch("api/workoutplan", {
       method: "POST",
       headers: {
@@ -71,55 +70,63 @@ const FitnessPage: React.FC = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const response = data.response.replace(/\n\n/g,"\r\n");
+        const response = data.response.replace(/\n\n/g, "\r\n");
         const workoutLines = response.split("\n");
         setWorkoutData(workoutLines);
         setCompletedItems(new Array(workoutLines.length).fill(false));
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error:", error);
+        setLoading(false);
       });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (
-        typeof weight === "number" &&
-        typeof height === "number" &&
-        typeof age === "number" &&
-        gender &&
-        activityLevel &&
-        muscleGoal // Ensure muscle goal is set
+      typeof weight === "number" &&
+      typeof height === "number" &&
+      typeof age === "number" &&
+      gender &&
+      activityLevel &&
+      muscleGoal // Ensure muscle goal is set
     ) {
-        setUserProfile({
-            weight: `${weight} kg`,
-            height: `${height} cm`,
-            age: `${age} years`,
-            gender: gender.charAt(0).toUpperCase() + gender.slice(1),
-            activityLevel: activityLevel,
-            muscleGoal: muscleGoal, // Set muscle goal
-        });
+      setUserProfile({
+        weight: `${weight} kg`,
+        height: `${height} cm`,
+        age: `${age} years`,
+        gender: gender.charAt(0).toUpperCase() + gender.slice(1),
+        activityLevel: activityLevel,
+        muscleGoal: muscleGoal,
+      });
 
-        //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
-        const userId = auth.getProfile()?.id; // Make sure this is defined
+      const userId = auth.getProfile()?.id;
 
-        if (userId) {
-          //UNCOMMENT THIS WHEN YOU WANT TO USE WITH AUTH TOKEN
-            try {
-                const nutritionData = await calculateNutrition(weight, height, age, gender, activityLevel, muscleGoal, userId); // Pass userId here
-                console.log("Nutrition Data:", nutritionData);
-            } catch (error) {
-                console.error("Failed to calculate nutrition:", error);
-            }
-        } else {
-            alert("User ID not found. Please ensure you're logged in.");
+      if (userId) {
+        try {
+          const nutritionData = await calculateNutrition(
+            weight,
+            height,
+            age,
+            gender,
+            activityLevel,
+            muscleGoal,
+            userId
+          );
+          console.log("Nutrition Data:", nutritionData);
+        } catch (error) {
+          console.error("Failed to calculate nutrition:", error);
         }
-        userPlan();
-        handleClose();
       } else {
-        alert("Please fill in all fields.");
+        alert("User ID not found. Please ensure you're logged in.");
       }
-};
+      userPlan();
+      handleClose();
+    } else {
+      alert("Please fill in all fields.");
+    }
+  };
 
   const handleCheckboxChange = (index: number) => {
     const updatedCompletedItems = [...completedItems];
@@ -275,24 +282,28 @@ const FitnessPage: React.FC = () => {
             <Card.Body>
               <Card.Title>Workout Plan</Card.Title>
               <div className="workout-list">
-                {workoutData.length > 0
-                  ? workoutData.map((line, index) =>
-                      isDayOfWeek(line) ? (
-                        <div key={index} className="day-header">
-                          {line}
-                        </div>
-                      ) : (
-                        <Form.Check
-                          key={index}
-                          type="checkbox"
-                          label={line.replace(/^-\s*/, "")}
-                          checked={completedItems[index]}
-                          onChange={() => handleCheckboxChange(index)}
-                          className="workout-item"
-                        />
-                      )
+                {loading ? (
+                  <div>Loading Your Personal Workout Plan. . .</div>
+                ) : workoutData.length > 0 ? (
+                  workoutData.map((line, index) =>
+                    isDayOfWeek(line) ? (
+                      <div key={index} className="day-header">
+                        {line}
+                      </div>
+                    ) : (
+                      <Form.Check
+                        key={index}
+                        type="checkbox"
+                        label={line.replace(/^-\s*/, "")}
+                        checked={completedItems[index]}
+                        onChange={() => handleCheckboxChange(index)}
+                        className="workout-item"
+                      />
                     )
-                  : "Workout plan generated after filling out User Profile"}
+                  )
+                ) : (
+                  "Workout plan generated after filling out User Profile"
+                )}
               </div>
             </Card.Body>
           </Card>
