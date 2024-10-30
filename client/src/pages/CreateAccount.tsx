@@ -2,7 +2,7 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { signUp } from "../api/authAPI";
 import type { CreateAccount } from "../interfaces/CreateAccount";
-import "../css/CreateAccount.css";
+import "../css/CreateAccountStyle.css";
 
 const CreateAccount = () => {
   const [CreateAccountData, setCreateAccountData] = useState<CreateAccount>({
