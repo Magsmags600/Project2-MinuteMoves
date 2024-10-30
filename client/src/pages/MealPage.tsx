@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { RecipeData } from "../interfaces/RecipeData"; 
+// import { Link } from "react-router-dom";
+
 import { fetchRecipes,fetchUserGoals } from '../api/recipeAPI'; 
 import '../css/MealPage.css';
 import auth from '../utils/auth'; 
@@ -8,16 +8,14 @@ import auth from '../utils/auth';
 
 const MealPage = () => {
     // State for recommended recipes and nutrient goals
-    const [recipes, setRecipes] = useState<RecipeData[]>([]);
     const [userGoals, setUserGoals] = useState<{ calories: number; protein: number; carbs: number; fat: number } | null>(null);
-
+    const [fetchedRecipes, setFetchedRecipes] = useState<string | null>(null);
         
     useEffect(() => {
       const loadUserGoals = async () => {
         try {
           const id  = auth.getProfile()?.id
           const goals = await fetchUserGoals(id as any);
-          console.log(goals);
           const { calories, protein, carbs, fat } = goals;
     
 
@@ -37,9 +35,8 @@ const MealPage = () => {
         if (userGoals) {
           try {
             console.log(userGoals); 
-            const fetchedRecipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
-            console.log(fetchRecipes);
-            setRecipes(fetchedRecipes);
+            const recipes = await fetchRecipes(userGoals.calories, userGoals.protein, userGoals.carbs, userGoals.fat);
+            setFetchedRecipes(recipes);
           } catch (error) {
             console.error("Failed to fetch recipes:", error);
           }
@@ -53,16 +50,15 @@ const MealPage = () => {
   return (
     <div className="meal-page">
       <h2>Your Recommended Meals</h2>
-      <p>Based on your intake survey, here are some meal suggestions!</p>
-
-      <div className="meal-list">
-        {recipes ? (
-          <div> {recipes}</div>
-        ) : (<div></div>)}
-
+      <p>Based on your stats, here are some meal suggestions!</p>
+      {fetchedRecipes ? (
+      <p>{fetchedRecipes}</p> // Render only if fetchedRecipes has content
+    ) : (
+      <p>Loading recipes...</p>
+    )}
       </div>
-    </div>
   );
 };
 
 export default MealPage;
+
